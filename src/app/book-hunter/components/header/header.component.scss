@@ -1,0 +1,42 @@
+@import '../../../../assets/styles/variables.scss';
+
+.container {
+padding-bottom: 10rem;
+}
+.header {
+  display: flex;
+  align-items: center;
+  background-color: $majestic-purple;
+  justify-content: space-evenly;
+  position: fixed;
+  z-index: 0;
+}
+
+.header a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+
+  .brand {
+    max-height: 32px;
+    cursor: pointer;
+  }
+}
+
+.brand:hover {
+  opacity: 0.8;
+}
+
+.header a:hover {
+  opacity: 0.8;
+}
+
+.header .social {
+  display: flex;
+
+  .git {
+    margin-right: 3rem;
+  }
+}
