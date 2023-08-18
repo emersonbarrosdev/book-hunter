@@ -1,4 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  overflow-y: scroll;
+  overflow-anchor: auto;
+  background-image: url(./assets/img/background.png);
+  background-position: center center;
+  background-size: cover;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-repeat: no-repeat;
+}
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  margin: 0;
+  padding: 0;
+}
+
+.mat-body p,
+.mat-body-2 p,
+.mat-typography .mat-body p,
+.mat-typography .mat-body-2 p,
+.mat-typography p {
+  margin: 0;
+}
