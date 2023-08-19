@@ -6,14 +6,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BookCardComponent } from './book-hunter/components/book-card/book-card.component';
 import { HeaderComponent } from './book-hunter/components/header/header.component';
-import { BookSearchComponent } from './book-hunter/views/book-search/book-search.component';
+import { BookSearchComponent } from './book-hunter/components/book-search/book-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    BookSearchComponent
+    BookSearchComponent,
+    BookCardComponent
   ],
   imports: [
     BrowserModule,

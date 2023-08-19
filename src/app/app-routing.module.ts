@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookSearchComponent } from './book-hunter/views/book-search/book-search.component';
+import { BookSearchComponent } from './book-hunter/components/book-search/book-search.component';
 
 const routes: Routes = [
   {
