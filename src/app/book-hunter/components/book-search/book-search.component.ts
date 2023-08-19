@@ -6,6 +6,7 @@ import { BookService } from '../../service/book.service';
 import { BookVolumeInformation } from '../../models/book-volume-information';
 import { BooksResult } from '../../models/books-result';
 import { Item } from '../../models/item';
+import { Router } from '@angular/router';
 
 const PAUSE = 500;
 
@@ -22,7 +23,10 @@ export class BookSearchComponent {
   isSearching = false;
   showImage = true;
 
-  constructor(private bookService: BookService) { }
+  constructor(
+    private bookService: BookService,
+    private router: Router
+  ) { }
 
   initializeSearch(): Observable<BooksResult> {
     this.setupSearch();
@@ -69,7 +73,4 @@ export class BookSearchComponent {
     }),
     map(items => this.getBooks(items))
   );
-
-
-
 }
