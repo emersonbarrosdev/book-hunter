@@ -8,7 +8,7 @@ import { BooksResult } from '../../models/books-result';
 import { Item } from '../../models/item';
 import { Router } from '@angular/router';
 
-const PAUSE = 500;
+const PAUSE = 1000;
 
 @Component({
   selector: 'app-book-search',
@@ -32,7 +32,7 @@ export class BookSearchComponent {
     this.setupSearch();
     return this.searchField.valueChanges.pipe(
       debounceTime(PAUSE),
-      filter(inputElement => inputElement.length >= 3),
+      filter(inputElement => inputElement.length >= 2),
       switchMap(inputValue => this.performSearch(inputValue)),
     );
   }

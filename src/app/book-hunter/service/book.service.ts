@@ -10,7 +10,7 @@ import { BooksResult } from '../models/books-result';
 })
 export class BookService {
 
-  private readonly GOOGLEAPI = 'https://www.googleapis.com/books/v1/volumes';
+  private readonly GOOGLEAPI = 'https://www.googleapis.com/books/v1/volumes?q=';
 
   private readonly simulate401Error = 'https://httpbin.org/status/401';
   private readonly simulate404Error = 'https://jsonplaceholder.typicode.com/status/404';
@@ -18,12 +18,14 @@ export class BookService {
 
   constructor(private http: HttpClient) { }
 
-  getSearch(query: string): Observable<BooksResult> {
-    const params = new HttpParams().append('q', query);
-    return this.http.get<BooksResult>(`${this.GOOGLEAPI}`, { params }).pipe(
+  getSearch(userQuery: string): Observable<BooksResult> {
+    const maxResults = `+&maxResults=${40}`;
+    return this.http.get<BooksResult>(`${this.GOOGLEAPI}${userQuery}${maxResults}`).pipe(
       catchError(error => this.handleError(error))
     );
   }
+
+
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     let message = 'Ocorreu um erro inesperado. Recarregue a página.';
@@ -43,3 +45,7 @@ export class BookService {
     return throwError(new Error(message));
   }
 }
+function forEach(arg0: (result: any) => any): import("rxjs").OperatorFunction<BooksResult, BooksResult> {
+  throw new Error('Function not implemented.');
+}
+
