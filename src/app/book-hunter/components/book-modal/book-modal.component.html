@@ -1,0 +1,24 @@
+<section *ngIf="statusModal" class="container {{ hideScroll() }}">
+  <div class="card">
+    <img class="image" src="{{ book.thumbnail != undefined ? book.thumbnail : 'assets/images/cover-unavailable.png' }}"
+      alt="capa livro">
+    <div class="card-information">
+      <p class="title">{{ book.title }}</p>
+      <p class="information">Autoria:</p>
+      <p class="result">{{ book.authors }}</p>
+      <p class="information">Data de publicação: </p>
+      <p class="result">{{ book.publishedDate | date: 'dd/MM/yyyy' }}</p>
+      <p class="information">Editora:</p>
+      <p class="result">{{ book.publisher }}</p>
+      <button (click)="readPreview()" class="details">Ler prévia</button>
+    </div>
+    <button (click)="closeModal()" class="btn-close">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="synopsis">
+      <h4 class="information">Sinopse</h4>
+      <p class="result">{{ book.description | slice:0:800 }}</p>
+    </div>
+  </div>
+  <div class="overlay"></div>
+</section>

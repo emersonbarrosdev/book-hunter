@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Book } from '../../models/book';
 
 @Component({
   selector: 'app-book-card',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class BookCardComponent {
 
+  @Input() book: Book;
+  openModal: boolean;
+
+  constructor() { }
+
+  onModal(event: boolean) {
+    this.openModal = event;
+  }
 }

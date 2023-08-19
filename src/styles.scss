@@ -10,13 +10,13 @@ body {
 }
 
 body {
-  overflow-y: scroll;
-  overflow-anchor: auto;
-  background-image: url(./assets/img/background.png);
-  background-position: center center;
-  background-size: cover;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-repeat: no-repeat;
+  // overflow-y: scroll;
+  // overflow-anchor: auto;
+  // background-image: url(./assets/img/background.png);
+  // background-position: center center;
+  // background-size: cover;
+  // background-repeat: no-repeat;
 }
 
 .container,

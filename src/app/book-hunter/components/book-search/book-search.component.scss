@@ -23,6 +23,7 @@ section {
 .form-control-lg {
   width: 400px;
   box-shadow: none;
+  color: $majestic-purple;
 }
 
 .form-control-lg:focus {
@@ -52,4 +53,29 @@ input::placeholder {
     padding: 0.5rem 0;
     color: $dark-purple;
   }
+}
+
+.error-message {
+  color: #684ad2;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  text-align: end;
+}
+
+.loading-spinner {
+  margin-top: 3rem;
+}
+
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: #572D7D;
+}
+
+.container-card {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
 }

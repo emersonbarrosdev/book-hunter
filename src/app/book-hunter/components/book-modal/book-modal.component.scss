@@ -1,0 +1,101 @@
+.card {
+  display: grid;
+  grid-template-areas: "image card-information btn-close" "synopsis synopsis synopsis";
+  grid-row-gap: 1rem;
+  min-height: 30rem;
+  max-height: 100%;
+  grid-template-columns: 1fr 3fr 20px;
+  grid-template-rows: min-content;
+  border-radius: 8px;
+  background: #F9F2ED;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  padding: 30px;
+  z-index: 11;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 22px;
+  color: #EA5455;
+}
+
+.information {
+  font-weight: 600;
+  font-size: 16px;
+  color: #8B8B8B;
+  text-align: justify;
+  margin:0;
+}
+
+p {
+  margin: 0 0 10px 0;
+}
+
+.details {
+  background: #EA5455;
+  width: 9rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #F9F2ED;
+  border: none;
+  cursor: pointer;
+}
+
+.details:hover {
+  background: #9A3738;
+}
+
+.card-information {
+  background: #F9F2ED;
+  padding-left: 1.5rem;
+  grid-area: card-information;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.image {
+  height: 18rem;
+  grid-area: image;
+}
+
+.synopsis {
+  grid-area: synopsis;
+  padding-bottom: 0;
+}
+
+.overlay {
+  background: #000;
+  height: 100vh;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+}
+
+.btn-close {
+  width: 24px;
+  height: 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  border: none;
+  color: #2d2d2d;
+  opacity: 0.5;
+  cursor: pointer;
+  background: none;
+  grid-area: btn-close;
+  margin-top: 0.5rem;
+}

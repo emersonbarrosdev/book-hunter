@@ -9,13 +9,21 @@ import { AppComponent } from './app.component';
 import { BookCardComponent } from './book-hunter/components/book-card/book-card.component';
 import { HeaderComponent } from './book-hunter/components/header/header.component';
 import { BookSearchComponent } from './book-hunter/components/book-search/book-search.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BookModalComponent } from './book-hunter/components/book-modal/book-modal.component';
+import { FirstAuthorPipe } from './book-hunter/pipes/first-author.pipe';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     BookSearchComponent,
-    BookCardComponent
+    BookCardComponent,
+    BookModalComponent,
+    FirstAuthorPipe
   ],
   imports: [
     BrowserModule,
@@ -23,6 +31,11 @@ import { BookSearchComponent } from './book-hunter/components/book-search/book-s
     BrowserAnimationsModule,
     MatToolbarModule,
     MatInputModule,
+
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
