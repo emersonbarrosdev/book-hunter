@@ -17,7 +17,7 @@ section {
 }
 
 .search {
-  margin-bottom: 3rem;
+  margin-bottom: 1.3rem;
 }
 
 .form-control-lg {
@@ -41,25 +41,24 @@ input::placeholder {
 }
 
 .message {
+  margin-top: 1.5rem;
   text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-align: center;
   color: $majestic-purple;
 
   p {
     font-weight: 800;
-    font-size: 1.8rem;
-    padding: 0.5rem 0;
+    font-size: 1.9rem;
+    padding: 0.9rem 0;
     color: $dark-purple;
   }
 }
 
 .error-message {
-  color: #684ad2;
-  margin-top: 2rem;
+  color: red;
+  margin-top: 0.5rem;
   margin-bottom: 2rem;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   text-align: end;
 }
@@ -78,4 +77,8 @@ input::placeholder {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
+}
+
+.results {
+  margin-bottom: 0.5rem;
 }

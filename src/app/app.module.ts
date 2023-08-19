@@ -31,7 +31,6 @@ import { FirstAuthorPipe } from './book-hunter/pipes/first-author.pipe';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatInputModule,
-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

@@ -13,10 +13,9 @@ img {
   flex-direction: row;
   width: 384px;
   height: 310px;
-  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.2));
-  margin: 20px;
+  filter: drop-shadow(1.3px 1.3px 5px rgba(0, 0, 0, 0.2));
+  margin: 8px;
   border-radius: 8px 0px 0px 8px;
-  z-index: 10;
 }
 
 .card-information {
@@ -31,10 +30,10 @@ img {
 }
 
 .title {
+  color:$book-title;
   font-weight: 600;
   font-size: 20px;
   line-height: 22px;
-  color: #fff;
   margin-top: 10px;
 }
 
@@ -43,9 +42,9 @@ p {
 }
 
 .information {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
-  color: $medium-purple;
+  color: $light-purple;
   margin-top: 5px;
 
 }
@@ -53,7 +52,7 @@ p {
 .result {
   font-weight: 400;
   font-size: 16px;
-  color: $light-purple;
+  color: #fff;
   margin-bottom: 5px;
 }
 
@@ -62,7 +61,7 @@ button {
   width: 156px;
   height: 40px;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
   color: $light-purple;
   border: none;
@@ -72,4 +71,5 @@ button {
 
 button:hover {
   background-color: $dark-purple;
+  border: 2px solid $majestic-purple;
 }
