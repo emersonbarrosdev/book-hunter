@@ -2,7 +2,7 @@
 
 
 .card {
-  background-color: $dark-purple;
+  background-color: $pink-02;
   display: grid;
   grid-template-areas: "image card-information btn-close" "synopsis synopsis synopsis";
   grid-row-gap: 1rem;
@@ -26,7 +26,7 @@
 }
 
 .title {
-  color:$book-title;
+  color:$yellow-01;
   font-weight: 600;
   font-size: 20px;
   line-height: 22px;
@@ -35,7 +35,7 @@
 .information {
   font-weight: 500;
   font-size: 16px;
-  color: $light-purple;
+  color: $yellow-03;
   text-align: justify;
   margin:0;
 }
@@ -45,8 +45,8 @@ p {
 }
 
 .details {
-  color: $light-purple;
-  background: $majestic-purple;
+  color: $pink-02;
+  background-color: $yellow-02;
   width: 9rem;
   height: 2.5rem;
   border-radius: 8px;
@@ -58,8 +58,9 @@ p {
 }
 
 .details:hover {
-  background-color: $dark-purple;
-  border: 2px solid $majestic-purple;
+  background-color: $pink-02;
+  color: $yellow-02;
+  border: 2px solid $yellow-02;
 }
 
 .card-information {
@@ -79,18 +80,18 @@ p {
 .synopsis {
   grid-area: synopsis;
   padding-bottom: 0;
-  color: $light-purple;
+  color: $yellow-03;
   max-width: 100%;
 }
 
 .overlay {
   background: #000;
   height: 100vh;
+  width: 100vw;
   left: 0;
   opacity: 0.8;
   position: fixed;
   top: 0;
-  width: 100vw;
   z-index: 11;
 }
 
@@ -111,14 +112,14 @@ p {
 }
 
 .card::-webkit-scrollbar-thumb {
-  background: $majestic-purple;
+  background: $pink-01;
   border-radius: 5px;
 }
 
 .card::-webkit-scrollbar-thumb:hover {
-  background: $medium-purple;
+  background: $yellow-01;
 }
 
 .card::-webkit-scrollbar-track {
-  background: $dark-purple;
+  background: $pink-02;
 }

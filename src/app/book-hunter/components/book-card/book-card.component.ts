@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Book } from '../../models/book';
+import { iBook } from '../../models/iBook';
 
 @Component({
   selector: 'app-book-card',
@@ -8,7 +8,7 @@ import { Book } from '../../models/book';
 })
 export class BookCardComponent {
 
-  @Input() book: Book;
+  @Input() book: iBook;
   openModal: boolean;
 
   constructor() { }

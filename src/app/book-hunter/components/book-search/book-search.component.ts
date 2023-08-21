@@ -3,9 +3,9 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { catchError, debounceTime, filter, map, switchMap, tap } from 'rxjs/operators';
 import { BookService } from '../../service/book.service';
-import { BookVolumeInformation } from '../../models/book-volume-information';
-import { BooksResult } from '../../models/books-result';
-import { Item } from '../../models/item';
+import { iBookVolumeInformation } from '../../models/iBook-volume-information';
+import { iBooksResult } from '../../models/iBooks-result';
+import { iItem } from '../../models/iItem';
 import { Router } from '@angular/router';
 
 const PAUSE = 1000;
@@ -18,7 +18,7 @@ const PAUSE = 1000;
 export class BookSearchComponent {
 
   searchField = new FormControl();
-  booksResults: BooksResult;
+  booksResults: iBooksResult;
   errorMessage: string;
   isSearching = false;
   showImage = true;
@@ -28,7 +28,7 @@ export class BookSearchComponent {
     private router: Router
   ) { }
 
-  initializeSearch(): Observable<BooksResult> {
+  initializeSearch(): Observable<iBooksResult> {
     this.setupSearch();
     return this.searchField.valueChanges.pipe(
       debounceTime(PAUSE),
@@ -50,7 +50,7 @@ export class BookSearchComponent {
     ).subscribe();
   }
 
-  private performSearch(inputValue: string): Observable<BooksResult> {
+  private performSearch(inputValue: string): Observable<iBooksResult> {
     return this.bookService.getSearch(inputValue).pipe(
       tap(() => this.isSearching = false),
       catchError(error => {
@@ -62,8 +62,8 @@ export class BookSearchComponent {
     );
   }
 
-  getBooks(items: Item[]): BookVolumeInformation[] {
-    return items.map(element => new BookVolumeInformation(element));
+  getBooks(items: iItem[]): iBookVolumeInformation[] {
+    return items.map(element => new iBookVolumeInformation(element));
   }
 
   bookFound = this.initializeSearch().pipe(

@@ -1,5 +1,6 @@
 <section>
   <div class="card">
+    <div class="overlay"></div>
     <img src="{{ book.thumbnail != undefined ? book.thumbnail : 'assets/img/not-available.png' }}"
       alt="capa livro">
     <div class="card-information">
@@ -16,4 +17,5 @@
   <div *ngIf="openModal">
     <app-book-modal [book]="book" (changeModal)="onModal($event)"></app-book-modal>
   </div>
+  <div class="card-overlay"></div>
 </section>

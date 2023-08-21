@@ -2,7 +2,7 @@ import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { BooksResult } from '../models/books-result';
+import { iBooksResult } from '../models/iBooks-result';
 
 
 @Injectable({
@@ -18,9 +18,9 @@ export class BookService {
 
   constructor(private http: HttpClient) { }
 
-  getSearch(userQuery: string): Observable<BooksResult> {
+  getSearch(userQuery: string): Observable<iBooksResult> {
     const maxResults = `+&maxResults=${40}`;
-    return this.http.get<BooksResult>(`${this.GOOGLEAPI}${userQuery}${maxResults}`).pipe(
+    return this.http.get<iBooksResult>(`${this.GOOGLEAPI}${userQuery}${maxResults}`).pipe(
       catchError(error => this.handleError(error))
     );
   }
@@ -45,7 +45,7 @@ export class BookService {
     return throwError(new Error(message));
   }
 }
-function forEach(arg0: (result: any) => any): import("rxjs").OperatorFunction<BooksResult, BooksResult> {
+function forEach(arg0: (result: any) => any): import("rxjs").OperatorFunction<iBooksResult, iBooksResult> {
   throw new Error('Function not implemented.');
 }
 

@@ -1,19 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;700;900&family=Press+Start+2P&display=swap');
 @import '../../../../assets/styles/variables.scss';
 
 section {
-  margin-top: 0;
+  margin-top: 6rem;
   font-size: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.title {
-  font-size: 1.5rem;
-  font-weight: 200;
-  color: $majestic-purple;
-  margin-bottom: 1rem;
+.question {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: $pink-02;
+  margin-bottom: 0.5rem;
 }
 
 .search {
@@ -23,35 +22,37 @@ section {
 .form-control-lg {
   width: 400px;
   box-shadow: none;
-  color: $majestic-purple;
+  color: $pink-01;
 }
 
 .form-control-lg:focus {
-  border: solid 3px $majestic-purple;
+  border: solid 3px $pink-01;
 }
 
 input {
   text-align: center;
+  border: solid 1px $pink-03;
 }
 
 input::placeholder {
   font-size: 1rem;
   text-align: center;
-  color: #d8d8d8;
+  color: $pink-03;
 }
 
 .message {
-  margin-top: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
   text-align: center;
-  color: $majestic-purple;
+  color: $pink-01;
+  margin-bottom: 4rem;
 
-  p {
-    font-weight: 800;
-    font-size: 1.9rem;
-    padding: 0.9rem 0;
-    color: $dark-purple;
+  strong{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
   }
 }
 
@@ -59,7 +60,7 @@ input::placeholder {
   color: red;
   margin-top: 0.5rem;
   margin-bottom: 2rem;
-  font-weight: 400;
+  font-weight: 600;
   text-align: end;
 }
 
@@ -68,7 +69,7 @@ input::placeholder {
 }
 
 .mat-mdc-progress-spinner {
-  --mdc-circular-progress-active-indicator-color: #572D7D;
+  --mdc-circular-progress-active-indicator-color: #BD245F;
 }
 
 .container-card {

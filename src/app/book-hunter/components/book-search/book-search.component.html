@@ -1,5 +1,10 @@
 <section>
-  <div class="title">Qual livro está procurando?</div>
+  <p  class="message">em cada página,
+    <strong>um novo <br> mundo</strong>
+    a desvendar
+  </p>
+
+  <div class="question">Qual livro está procurando?</div>
   <div class="search">
     <input [formControl]="searchField" class="form-control form-control-lg" type="text" placeholder="Busque por assunto, autoria, nome...">
   </div>
@@ -24,10 +29,6 @@
     </div>
   </div>
 
-  <div *ngIf="showImage" class="message">em cada página,
-    <p>um novo mundo</p>
-    a desvendar
-  </div>
 </section>
 
 

@@ -1,4 +1,4 @@
-export interface ImageLinks {
+export interface iImageLinks {
   smallThumbnail: string;
   thumbnail: string;
   small: string;
