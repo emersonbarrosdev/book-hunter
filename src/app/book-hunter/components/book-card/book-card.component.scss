@@ -20,19 +20,19 @@ img {
   z-index: 2;
 }
 
-.overlay {
-  border-radius: 8px;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  opacity: 0.3;
-  background-color: black;
-}
+// .overlay {
+//   border-radius: 8px;
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   position: fixed;
+//   opacity: 0.3;
+//   background-color: black;
+// }
 
-.card:hover .overlay {
-  display: none;
-}
+// .card:hover .overlay {
+//   display: none;
+// }
 
 .card-information {
   padding: 7px 10px 7px 10px;

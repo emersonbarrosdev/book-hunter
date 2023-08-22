@@ -50,3 +50,64 @@ a {
   text-decoration: none;
   color: $yellow-01;
 }
+
+.bg-light {
+  --bs-bg-opacity: 1 !important;
+  background-color: var(--bs-bg-opacity) !important;
+}
+
+@media screen and (max-width: 768px) {
+
+  .navbar-toggler {
+    border: 2px solid $yellow-01;
+   }
+   .navbar-toggler:focus {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+   }
+
+ .navbar-light .navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='yellow' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+   }
+
+  .content {
+    .git {
+      margin-right: 0;
+    }
+  }
+
+  .navbar-collapse {
+    width: 100%;
+    background-color: $pink-01;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+
+    .navbar-toggler {
+     border: 1px solid $yellow-01;
+    }
+  }
+
+  .navbar-collapse.show {
+    max-height: 200px;
+  }
+
+  .bg-light {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+
+  li {
+    padding-left: 15px;
+  }
+
+  li:hover {
+    background-color: $pink-02;
+  }
+
+}

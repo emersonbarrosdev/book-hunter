@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { iBooksResult } from '../models/iBooks-result';
@@ -16,7 +16,7 @@ export class BookService {
   private readonly simulate404Error = 'https://jsonplaceholder.typicode.com/status/404';
   private readonly simulate503Error = 'https://www.googleapis.com/books/v1/volumes/posts';
 
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient)
 
   getSearch(userQuery: string): Observable<iBooksResult> {
     const maxResults = `+&maxResults=${40}`;

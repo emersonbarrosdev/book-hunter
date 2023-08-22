@@ -1,16 +1,16 @@
 <section>
   <div class="card">
     <div class="overlay"></div>
-    <img src="{{ book.thumbnail != undefined ? book.thumbnail : 'assets/img/not-available.png' }}"
+    <img src="{{ book?.thumbnail != undefined ? book?.thumbnail : 'assets/img/not-available.png' }}"
       alt="capa livro">
     <div class="card-information">
-      <p class="title">{{ book.title | slice:0:30 }}</p>
+      <p class="title">{{ book?.title | slice:0:30 }}</p>
       <p class="information">Autoria:</p>
-      <p class="result">{{ book.authors | firstAuthor | slice:0:17 }}</p>
+      <p class="result">{{ book?.authors | firstAuthor | slice:0:17 }}</p>
       <p class="information">Data de publicação: </p>
-      <p class="result">{{ book.publishedDate | date: 'dd/MM/yyyy' }}</p>
+      <p class="result">{{ book?.publishedDate | date: 'dd/MM/yyyy' }}</p>
       <p class="information">Editora:</p>
-      <p class="result">{{ book.publisher | slice:0:17 }}</p>
+      <p class="result">{{ book?.publisher | slice:0:17 }}</p>
       <button (click)="onModal(true)">Mais detalhes</button>
     </div>
   </div>
@@ -19,3 +19,31 @@
   </div>
   <div class="card-overlay"></div>
 </section>
+
+<!--
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ book?.thumbnail != undefined ? book?.thumbnail : 'assets/img/not-available.png' }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title" class="title">{{ book?.title | slice:0:30 }}</h5>
+
+          <p class="information">Autoria:</p>
+        <p class="result">{{ book?.authors | firstAuthor | slice:0:17 }}</p>
+        <p class="information">Data de publicação: </p>
+        <p class="result">{{ book?.publishedDate | date: 'dd/MM/yyyy' }}</p>
+        <p class="information">Editora:</p>
+        <p class="result">{{ book?.publisher | slice:0:17 }}</p>
+        <button (click)="onModal(true)">Mais detalhes</button>
+
+        </div>
+        <div *ngIf="openModal">
+          <app-book-modal [book]="book" (changeModal)="onModal($event)"></app-book-modal>
+        </div>
+        <div class="card-overlay"></div>
+      </div>
+    </div>
+  </div>
+ -->

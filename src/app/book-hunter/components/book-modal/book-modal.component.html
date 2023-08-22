@@ -1,5 +1,8 @@
 <section *ngIf="statusModal" class="container {{ hideScroll() }}">
   <div class="card">
+    <button (click)="closeModal()" class="btn-close">
+      <span class="material-symbols-outlined">X</span>
+    </button>
     <img class="image" src="{{ book.thumbnail != undefined ? book.thumbnail : 'assets/images/cover-unavailable.png' }}"
       alt="capa livro">
     <div class="card-information">
@@ -12,9 +15,6 @@
       <p class="result">{{ book.publisher }}</p>
       <button (click)="readPreview()" class="details">Ler prévia</button>
     </div>
-    <button (click)="closeModal()" class="btn-close">
-      <span class="material-symbols-outlined">X</span>
-    </button>
     <div class="synopsis">
       <h4 class="information">Sinopse</h4>
       <p class="result">{{ book.description }}</p>

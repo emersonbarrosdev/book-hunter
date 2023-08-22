@@ -96,7 +96,6 @@ p {
 }
 
 .btn-close {
-  font-style: normal;
   font-weight: 400;
   font-size: 20px;
   border: none;
@@ -104,6 +103,7 @@ p {
   cursor: pointer;
   background: none;
   grid-area: btn-close;
+  display: contents;
 }
 
 /* Estilo da barra de rolagem */
@@ -122,4 +122,24 @@ p {
 
 .card::-webkit-scrollbar-track {
   background: $pink-02;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    max-width: 85%;
+    display: flex;
+  }
+
+  .btn-close {
+    text-align: end;
+    font-size: 2rem;
+  }
+
+  img {
+    margin-top: 10px;
+  }
+
+  .card-information {
+    padding-left: 0;
+  }
 }

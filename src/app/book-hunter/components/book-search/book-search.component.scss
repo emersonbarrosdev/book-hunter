@@ -44,15 +44,15 @@ input::placeholder {
   font-family: 'Poppins', sans-serif;
   font-weight: 200;
   text-transform: uppercase;
-  font-size: 2rem;
-  line-height: 2.5rem;
+  font-size: 2.5rem;
+  line-height: 2.7rem;
   text-align: center;
   color: $pink-01;
   margin-bottom: 4rem;
 
-  strong{
+  strong {
     font-family: 'Poppins', sans-serif;
-    font-weight: 400;
+    font-weight: 600;
   }
 }
 
@@ -73,13 +73,39 @@ input::placeholder {
 }
 
 .container-card {
+  width: 100%;
   margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0 auto;
 }
 
 .results {
   margin-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+
+  .message {
+    font-size: 1.7rem;
+    line-height: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .form-control-lg {
+    width: 250px;
+  }
+
+  .question {
+    font-size: 1rem;
+  }
+
+  input {
+    padding-top: 0;
+  }
+
+  input::placeholder {
+    font-size: 0.7rem;
+  }
+
 }

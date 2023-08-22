@@ -14,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BookModalComponent } from './book-hunter/components/book-modal/book-modal.component';
 import { FirstAuthorPipe } from './book-hunter/pipes/first-author.pipe';
-
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -35,6 +35,7 @@ import { FirstAuthorPipe } from './book-hunter/pipes/first-author.pipe';
     FormsModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
