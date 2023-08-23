@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { iBook } from '../../models/iBook';
+import { Book } from '../../models/book';
 
 const body = document.querySelector("body");
 
@@ -10,7 +10,7 @@ const body = document.querySelector("body");
 })
 export class BookModalComponent {
 
-  @Input() book: iBook;
+  @Input() book: Book;
   statusModal: boolean = true;
   @Output() changeModal = new EventEmitter();
 

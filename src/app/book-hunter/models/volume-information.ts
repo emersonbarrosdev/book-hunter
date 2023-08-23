@@ -1,6 +1,6 @@
-import { iImageLinks } from './iImage-links';
+import { ImageLinks } from './image-links';
 
-export interface iVolumeInformation {
+export class VolumeInformation {
   title: string;
   authors: string[];
   publisher: string;
@@ -13,7 +13,7 @@ export interface iVolumeInformation {
   averageRating: number;
   ratingsCount: number;
   contentVersion: string;
-  imageLinks: iImageLinks;
+  imageLinks: ImageLinks;
   language: string;
   infoLink: string;
   canonicalVolumeLink: string;

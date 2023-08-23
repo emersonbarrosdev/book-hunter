@@ -1,4 +1,4 @@
-export class iBookVolumeInformation {
+export class BookVolumeInformation {
   title?: string;
   authors?: string[];
   publisher?: string;

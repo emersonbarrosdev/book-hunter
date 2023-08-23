@@ -2,7 +2,7 @@ import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http'
 import { Injectable, inject } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { iBooksResult } from '../models/iBooks-result';
+import { BooksResult } from '../models/books-result';
 
 
 @Injectable({
@@ -14,9 +14,10 @@ export class BookService {
 
   private http = inject(HttpClient)
 
-  getSearch(userQuery: string): Observable<iBooksResult> {
+  getSearch(userQuery: string): Observable<BooksResult> {
     const maxResults = `+&maxResults=${40}`;
-    return this.http.get<iBooksResult>(`${this.GOOGLEAPI}${userQuery}${maxResults}`).pipe(
+    return this.http.get<BooksResult>(`${this.GOOGLEAPI}${userQuery}${maxResults}`).
+    pipe(
       catchError(error => this.handleError(error))
     );
   }

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { catchError, debounceTime, filter, map, switchMap, tap } from 'rxjs/operators';
-import { BookService } from '../../service/book.service';
-import { iBookVolumeInformation } from '../../models/iBook-volume-information';
-import { iBooksResult } from '../../models/iBooks-result';
-import { iItem } from '../../models/iItem';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { catchError, debounceTime, filter, first, map, switchMap, tap } from 'rxjs/operators';
+import { BookVolumeInformation } from '../../models/book-volume-information';
+import { BooksResult } from '../../models/books-result';
+import { Item } from '../../models/item';
+import { BookService } from '../../service/book.service';
 
 const PAUSE = 1000;
 
@@ -18,22 +18,20 @@ const PAUSE = 1000;
 export class BookSearchComponent {
 
   searchField = new FormControl();
-  booksResults: iBooksResult;
+  booksResults: BooksResult;
   errorMessage: string;
   isSearching = false;
   showImage = true;
 
   constructor(
     private bookService: BookService,
-    private router: Router
   ) { }
 
-  initializeSearch(): Observable<iBooksResult> {
+  initializeSearch(): Observable<BooksResult> {
     this.setupSearch();
     return this.searchField.valueChanges.pipe(
       debounceTime(PAUSE),
       filter(inputElement => inputElement.length >= 2),
-      switchMap(inputValue => this.performSearch(inputValue)),
     );
   }
 
@@ -50,7 +48,7 @@ export class BookSearchComponent {
     ).subscribe();
   }
 
-   performSearch(inputValue: string): Observable<iBooksResult> {
+   performSearch(inputValue: string): Observable<BooksResult> {
     return this.bookService.getSearch(inputValue).pipe(
       tap(() => this.isSearching = false),
       catchError(error => {
@@ -62,8 +60,8 @@ export class BookSearchComponent {
     );
   }
 
-  getBooks(items: iItem[]): iBookVolumeInformation[] {
-    return items.map(element => new iBookVolumeInformation(element));
+  getBooks(items: Item[]): BookVolumeInformation[] {
+    return items.map(element => new BookVolumeInformation(element));
   }
 
   bookFound = this.initializeSearch().pipe(
