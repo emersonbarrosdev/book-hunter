@@ -12,10 +12,6 @@ export class BookService {
 
   private readonly GOOGLEAPI = 'https://www.googleapis.com/books/v1/volumes?q=';
 
-  private readonly simulate401Error = 'https://httpbin.org/status/401';
-  private readonly simulate404Error = 'https://jsonplaceholder.typicode.com/status/404';
-  private readonly simulate503Error = 'https://www.googleapis.com/books/v1/volumes/posts';
-
   private http = inject(HttpClient)
 
   getSearch(userQuery: string): Observable<iBooksResult> {
@@ -24,8 +20,6 @@ export class BookService {
       catchError(error => this.handleError(error))
     );
   }
-
-
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     let message = 'Ocorreu um erro inesperado. Recarregue a página.';
@@ -44,8 +38,8 @@ export class BookService {
     }
     return throwError(new Error(message));
   }
-}
-function forEach(arg0: (result: any) => any): import("rxjs").OperatorFunction<iBooksResult, iBooksResult> {
-  throw new Error('Function not implemented.');
-}
 
+  reloadPage() {
+    window.location.reload();
+  }
+}

@@ -1,4 +1,5 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
+import { BookService } from '../../service/book.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,11 @@ import { Component, ElementRef, HostListener } from '@angular/core';
 export class HeaderComponent {
 
   isMenuOpen: boolean = false;
-  constructor(private elementRef: ElementRef){
 
-  }
+  constructor(
+    private elementRef: ElementRef,
+    private bookService: BookService,
+  ) {}
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -23,8 +26,7 @@ export class HeaderComponent {
     }
   }
 
-
   reloadPage() {
-    window.location.reload();
+    this.bookService.reloadPage();
   }
 }

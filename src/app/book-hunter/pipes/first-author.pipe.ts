@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FirstAuthorPipe implements PipeTransform {
 
-  transform(firstAuthor: string[]): string {
-    if (firstAuthor) {
+  transform(firstAuthor: string[] | undefined): string {
+    if (firstAuthor && firstAuthor.length > 0) {
       return firstAuthor[0];
     }
     return '';

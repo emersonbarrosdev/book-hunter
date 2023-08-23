@@ -12,27 +12,19 @@ img {
   display: flex;
   flex-direction: row;
   width: 384px;
-  height: 310px;
+  height: 320px;
   filter: drop-shadow(1.3px 1.3px 5px rgba(0, 0, 0, 0.2));
   margin: 10px;
   border-radius: 8px;
   position: relative;
   z-index: 2;
+  background-color: $pink-02;
+  transition: transform 0.3s ease;
 }
 
-// .overlay {
-//   border-radius: 8px;
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   position: fixed;
-//   opacity: 0.3;
-//   background-color: black;
-// }
-
-// .card:hover .overlay {
-//   display: none;
-// }
+.card:hover {
+  transform: scale(1.05);
+}
 
 .card-information {
   padding: 7px 10px 7px 10px;
@@ -90,3 +82,4 @@ button:hover {
   color: $yellow-02;
   border: 2px solid $yellow-02;
 }
+

@@ -37,7 +37,7 @@ export class BookSearchComponent {
     );
   }
 
-  private setupSearch(): void {
+   setupSearch(): void {
     this.searchField.valueChanges.pipe(
       tap(() => this.isSearching = true),
       tap(() => this.showImage = false),
@@ -50,7 +50,7 @@ export class BookSearchComponent {
     ).subscribe();
   }
 
-  private performSearch(inputValue: string): Observable<iBooksResult> {
+   performSearch(inputValue: string): Observable<iBooksResult> {
     return this.bookService.getSearch(inputValue).pipe(
       tap(() => this.isSearching = false),
       catchError(error => {

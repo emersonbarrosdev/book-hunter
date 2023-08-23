@@ -3,21 +3,21 @@
     <button (click)="closeModal()" class="btn-close">
       <span class="material-symbols-outlined">X</span>
     </button>
-    <img class="image" src="{{ book.thumbnail != undefined ? book.thumbnail : 'assets/images/cover-unavailable.png' }}"
+    <img class="image" src="{{ book?.thumbnail != undefined ? book?.thumbnail : 'assets/images/cover-unavailable.png' }}"
       alt="capa livro">
     <div class="card-information">
-      <p class="title">{{ book.title }}</p>
+      <p class="title">{{ book?.title }}</p>
       <p class="information">Autoria:</p>
-      <p class="result">{{ book.authors }}</p>
+      <p class="result">{{ book?.authors }}</p>
       <p class="information">Data de publicação: </p>
-      <p class="result">{{ book.publishedDate | date: 'dd/MM/yyyy' }}</p>
+      <p class="result">{{ book?.publishedDate | date: 'dd/MM/yyyy' }}</p>
       <p class="information">Editora:</p>
-      <p class="result">{{ book.publisher }}</p>
+      <p class="result">{{ book?.publisher }}</p>
       <button (click)="readPreview()" class="details">Ler prévia</button>
     </div>
     <div class="synopsis">
       <h4 class="information">Sinopse</h4>
-      <p class="result">{{ book.description }}</p>
+      <p class="result">{{ book?.description }}</p>
     </div>
   </div>
   <div class="overlay"></div>

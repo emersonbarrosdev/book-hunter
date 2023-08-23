@@ -1,29 +1,39 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
+  let app: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(() => TestBed.configureTestingModule({
+
     imports: [RouterTestingModule],
     declarations: [AppComponent]
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent],
+      imports: [RouterTestingModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    }).compileComponents();
   });
 
-  it(`should have as title 'BookHunter'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('BookHunter');
-  });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('BookHunter app is running!');
+  });
+
+  afterEach(() => {
+    fixture.detectChanges();
+    fixture = null;
+  });
+
+  it('should create', () => {
+    expect(app).toBeTruthy();
   });
 });

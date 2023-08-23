@@ -11,8 +11,6 @@ export class BookCardComponent {
   @Input() book: iBook;
   openModal: boolean;
 
-  constructor() { }
-
   onModal(event: boolean) {
     this.openModal = event;
   }
