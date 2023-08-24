@@ -61,6 +61,7 @@ a {
   .navbar-toggler {
     border: 2px solid $yellow-01;
    }
+
    .navbar-toggler:focus {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
    }
@@ -100,6 +101,7 @@ a {
     justify-content: center;
     display: flex;
     align-items: center;
+    width: 35%;
   }
 
   li {

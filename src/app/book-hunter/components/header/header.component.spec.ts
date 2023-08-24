@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 import { BookService } from '../../service/book.service';
 import { HeaderComponent } from './header.component';
 
@@ -13,7 +14,8 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [HttpClientModule],
+      imports: [HttpClientModule,
+        RouterTestingModule.withRoutes([]),],
       providers: [BookService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
@@ -52,9 +54,9 @@ describe('HeaderComponent', () => {
     expect(component.isMenuOpen).toBe(false);
   });
 
-  it('should call reloadPage when the button is clicked', () => {
-    const spy = spyOn(bookService, 'reloadPage');
-    component.reloadPage();
-    expect(spy).toHaveBeenCalled();
+  it('should navigate to the root path when reloadPage is called', () => {
+    spyOn(component['router'], 'navigate');
+    component.reloadPage()
+    expect(component['router'].navigate).toHaveBeenCalledWith(['/']);
   });
 });

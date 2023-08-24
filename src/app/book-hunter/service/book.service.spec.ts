@@ -1,8 +1,9 @@
 import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { BookService } from './book.service';
+import { first, throwError } from 'rxjs';
 
 describe('BookService', () => {
   let service: BookService;
@@ -25,12 +26,6 @@ describe('BookService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
-  });
-
-
-  it('calls reload function', () => {
-    spyOn(service, 'reloadPage').and.callThrough()
-    expect(service.reloadPage).toBeTruthy();
   });
 
   it('should make an HTTP GET request', () => {
@@ -94,5 +89,23 @@ describe('BookService', () => {
         done();
       },
     });
+  });
+
+  it('should handle error using catchError', () => {
+    const userQuery = 'Angular';
+    const expectedError = new HttpErrorResponse({
+      error: 'Ocorreu um erro inesperado. Recarregue a página.',
+      status: 500,
+      statusText: 'Internal Server Error',
+    });
+    spyOn(service['http'], 'get').and.returnValue(throwError(expectedError));
+    service.getSearch(userQuery).subscribe(
+      () => fail('Expected an error, but got a result'),
+      (error: HttpErrorResponse) => {
+        expect(error.message).toEqual(expectedError.error);
+      }
+    );
+    expect(service['http'].get).toHaveBeenCalled();
+    httpTestingController.verify();
   });
 });

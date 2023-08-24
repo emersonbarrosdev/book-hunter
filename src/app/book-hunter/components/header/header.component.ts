@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
-import { BookService } from '../../service/book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +12,8 @@ export class HeaderComponent {
 
   constructor(
     private elementRef: ElementRef,
-    private bookService: BookService,
-  ) {}
+    private router: Router
+  ) { }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -27,6 +27,6 @@ export class HeaderComponent {
   }
 
   reloadPage() {
-    this.bookService.reloadPage();
+    this.router.navigate(['/'])
   }
 }

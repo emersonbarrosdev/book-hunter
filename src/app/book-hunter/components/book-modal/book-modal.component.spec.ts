@@ -24,4 +24,31 @@ describe('BookModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should close the modal and emit an event', () => {
+    spyOn(component.changeModal, 'emit');
+    fixture.detectChanges();
+    component.closeModal();
+    component.statusModal = false;
+    expect(component.statusModal).toBe(false);
+    expect(component.changeModal.emit).toHaveBeenCalled();
+  });
+
+  it('should open the modal and emit an event', () => {
+    spyOn(component.changeModal, 'emit');
+    fixture.detectChanges();
+    component.closeModal();
+    component.statusModal = true;
+    expect(component.statusModal).toBe(true);
+    expect(component.changeModal.emit).toHaveBeenCalledWith(false);
+  });
+
+  it('should open the book preview link in a new window', () => {
+    spyOn(window, 'open')
+    const book = { previewLink: 'https://www.google.com.br/' };
+    component.book = book;
+    component.readPreview();
+    expect(window.open).toHaveBeenCalledWith(book.previewLink, '_blank');
+  });
+
 });

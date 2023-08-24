@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { catchError, debounceTime, filter, first, map, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { catchError, debounceTime, filter, map, switchMap, tap } from 'rxjs/operators';
 import { BookVolumeInformation } from '../../models/book-volume-information';
 import { BooksResult } from '../../models/books-result';
 import { Item } from '../../models/item';
 import { BookService } from '../../service/book.service';
 
-const PAUSE = 1000;
+const PAUSE = 500;
 
 @Component({
   selector: 'app-book-search',
@@ -32,10 +32,11 @@ export class BookSearchComponent {
     return this.searchField.valueChanges.pipe(
       debounceTime(PAUSE),
       filter(inputElement => inputElement.length >= 2),
+      switchMap(inputValue => this.performSearch(inputValue)),
     );
   }
 
-   setupSearch(): void {
+  setupSearch(): void {
     this.searchField.valueChanges.pipe(
       tap(() => this.isSearching = true),
       tap(() => this.showImage = false),
@@ -48,7 +49,7 @@ export class BookSearchComponent {
     ).subscribe();
   }
 
-   performSearch(inputValue: string): Observable<BooksResult> {
+  performSearch(inputValue: string): Observable<BooksResult> {
     return this.bookService.getSearch(inputValue).pipe(
       tap(() => this.isSearching = false),
       catchError(error => {

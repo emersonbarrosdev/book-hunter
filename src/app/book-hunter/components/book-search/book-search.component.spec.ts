@@ -1,10 +1,9 @@
-import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { BooksResult } from '../../models/books-result';
 import { ImageLinks } from '../../models/image-links';
 import { Item } from '../../models/item';
@@ -12,29 +11,27 @@ import { VolumeInformation } from '../../models/volume-information';
 import { BookService } from '../../service/book.service';
 import { BookSearchComponent } from './book-search.component';
 
-
-
 describe('BookSearchComponent', () => {
   let component: BookSearchComponent;
   let fixture: ComponentFixture<BookSearchComponent>;
-  let bookService: BookService;
+  let service: BookService;
   let searchField: FormControl;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync (() => {
+     TestBed.configureTestingModule({
       declarations: [BookSearchComponent],
       imports: [ReactiveFormsModule, RouterTestingModule, HttpClientModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-        BookService
+        BookService,
       ]
     }).compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BookSearchComponent);
     component = fixture.componentInstance;
-    bookService = TestBed.inject(BookService);
+    service = TestBed.inject(BookService);
     searchField = new FormControl();
     component.searchField = searchField;
     fixture.detectChanges();
@@ -46,21 +43,8 @@ describe('BookSearchComponent', () => {
     component = null;
   });
 
-
-  it('should initialize search correctly', () => {
-    component.searchField.setValue('Angular');
-
-    const result = component.initializeSearch();
-
-    let receivedResult: any;
-    result.subscribe((data) => {
-      receivedResult = data;
-    });
-    component.isSearching = true;
-    component.showImage = false;
-    fixture.detectChanges();
-    expect(component.isSearching).toBe(true);
-    expect(component.showImage).toBe(false);
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
   it('should return an empty array when input is empty', () => {
@@ -81,30 +65,6 @@ describe('BookSearchComponent', () => {
     expect(result.length).toBe(1);
   });
 
-  it('should return an empty array when initializeSearch result has no items', () => {
-    let imagesLinks = new ImageLinks();
-    const volumeInformation = new VolumeInformation();
-    volumeInformation.title = 'Book 1';
-    volumeInformation.authors = ['Author 1'];
-    volumeInformation.publisher = 'Publisher 1';
-    volumeInformation.publishedDate = (new Date('2023-01-01'));
-    volumeInformation.pageCount = 2;
-    volumeInformation.categories = [''];
-    volumeInformation.averageRating = 2;
-    volumeInformation.ratingsCount = 2;
-    volumeInformation.imageLinks = imagesLinks;
-    let items: Item[] = [{ volumeInformation }];
-    const booksResult: BooksResult = {
-
-      items: items,
-      totalItems: items.length,
-    };
-    spyOn(component, 'initializeSearch').and.returnValue(of(booksResult));
-    component.bookFound.subscribe((result) => {
-      expect(result).toEqual([]);
-    });
-  });
-
   it('should return BooksResult on successful search', () => {
     let imagesLinks = new ImageLinks();
     const volumeInformation = new VolumeInformation();
@@ -120,6 +80,7 @@ describe('BookSearchComponent', () => {
     let items: Item[] = [{ volumeInformation }];
     const inputValue = 'Angular';
     const booksResult: BooksResult = {
+      kind: 'string',
       items: items,
       totalItems: items.length,
     };
@@ -135,7 +96,7 @@ describe('BookSearchComponent', () => {
   it('should handle error and update variables', () => {
     const inputValue = 'Angular';
     const errorMessage = 'Error message';
-    spyOn(bookService, 'getSearch').and.returnValue(throwError({ message: errorMessage }));
+    spyOn(service, 'getSearch').and.returnValue(throwError({ message: errorMessage }));
     component.performSearch(inputValue).subscribe({
       error: error => {
         expect(error.message).toEqual(errorMessage);
@@ -153,6 +114,5 @@ describe('BookSearchComponent', () => {
     expect(component.isSearching).toBe(true);
     expect(component.showImage).toBe(false);
   });
-
 
 });

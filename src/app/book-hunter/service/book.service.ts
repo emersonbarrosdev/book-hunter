@@ -39,8 +39,4 @@ export class BookService {
     }
     return throwError(new Error(message));
   }
-
-  reloadPage() {
-    window.location.reload();
-  }
 }
