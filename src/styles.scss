@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
-@import './assets/styles/variables.scss';
-
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
 * {
   margin: 0;
@@ -12,35 +11,68 @@ html,
 body {
   height: 100vh;
   width: 100vw;
-  background-color: $yellow-04;
 
   ::-webkit-scrollbar {
     width: 0;
   }
 
+  .menu-toggle {
+    background-color: var(--pink-01);
+    stroke: white !important;
+    border: white !important;
+    color: white !important;
+  }
+
+  .mat-mdc-icon-button.mat-mdc-button-base {
+    color: var(--yellow-01);
+  }
+}
+
+// .container,
+// .container-fluid,
+// .container-lg,
+// .container-md,
+// .container-sm,
+// .container-xl,
+// .container-xxl {
+//   margin: 0;
+//   padding: 0;
+// }
+
+// .mat-body p,
+// .mat-body-2 p,
+// .mat-typography .mat-body p,
+// .mat-typography .mat-body-2 p,
+// .mat-typography p {
+//   margin: 0;
+// }
+
+:root {
+  --body: #fff;
+  --pink-01: #FF0060;
+  --pink-02: #BD245F;
+  --pink-03: #FFA1AC;
+  --text: #FF0060;
+  --title: #FFFF00;
+  --yellow-01: #FFFF00;
+  --yellow-02: #FFE227;
+  --yellow-03: #FFF5DB;
+  --yellow-04: #FFFFE6;
+}
+
+:root .dark-theme {
+  --body: #1b1b1b;
+  --pink-01: #BD245F;
+  --pink-02: #3d3d3d;
+  --pink-03: rgb(162, 162, 162);
+  --text: #FFF5DB;
+  --title: #ffd770;
+  --yellow-01: #FFF5DB;
+  --yellow-02: #ffff92;
+  --yellow-03: #dbdbdb;
+  --yellow-04: #FFFFE6;
 }
 
 body {
-  background-image: url(./assets/img/background.png);
-  background-position: center center;
-  background-size: cover;
-}
-
-.container,
-.container-fluid,
-.container-lg,
-.container-md,
-.container-sm,
-.container-xl,
-.container-xxl {
-  margin: 0;
-  padding: 0;
-}
-
-.mat-body p,
-.mat-body-2 p,
-.mat-typography .mat-body p,
-.mat-typography .mat-body-2 p,
-.mat-typography p {
-  margin: 0;
+  background-color: (var(--body));
 }

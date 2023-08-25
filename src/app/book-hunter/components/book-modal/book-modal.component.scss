@@ -1,8 +1,5 @@
-@import '../../../../assets/styles/variables.scss';
-
-
 .card {
-  background-color: $pink-02;
+  background-color: var(--pink-02);
   display: grid;
   grid-template-areas: "image card-information btn-close" "synopsis synopsis synopsis";
   grid-row-gap: 1rem;
@@ -26,7 +23,7 @@
 }
 
 .title {
-  color:$yellow-01;
+  color:var(--title);
   font-weight: 600;
   font-size: 20px;
   line-height: 22px;
@@ -35,7 +32,7 @@
 .information {
   font-weight: 500;
   font-size: 16px;
-  color: $yellow-03;
+  color: var(--yellow-03);
   text-align: justify;
   margin:0;
 }
@@ -45,8 +42,8 @@ p {
 }
 
 .details {
-  color: $pink-02;
-  background-color: $yellow-02;
+  color: var(--pink-02);
+  background-color: var(--yellow-02);
   width: 9rem;
   height: 2.5rem;
   border-radius: 8px;
@@ -58,9 +55,9 @@ p {
 }
 
 .details:hover {
-  background-color: $pink-02;
-  color: $yellow-02;
-  border: 2px solid $yellow-02;
+  background-color: var(--pink-02);
+  color: var(--yellow-02);
+  border: 2px solid var(--yellow-02);
 }
 
 .card-information {
@@ -80,7 +77,7 @@ p {
 .synopsis {
   grid-area: synopsis;
   padding-bottom: 0;
-  color: $yellow-03;
+  color: var(--yellow-03);
   max-width: 100%;
 }
 
@@ -112,19 +109,19 @@ p {
 }
 
 .card::-webkit-scrollbar-thumb {
-  background: $pink-01;
+  background: var(--pink-01);
   border-radius: 5px;
 }
 
 .card::-webkit-scrollbar-thumb:hover {
-  background: $yellow-01;
+  background: var(--yellow-01);
 }
 
 .card::-webkit-scrollbar-track {
-  background: $pink-02;
+  background: var(--pink-02);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .card {
     max-width: 85%;
     display: flex;

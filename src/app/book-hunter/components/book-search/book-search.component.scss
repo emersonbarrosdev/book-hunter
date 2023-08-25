@@ -1,5 +1,3 @@
-@import '../../../../assets/styles/variables.scss';
-
 section {
   margin-top: 6rem;
   font-size: 1rem;
@@ -11,7 +9,7 @@ section {
 .question {
   font-size: 1.3rem;
   font-weight: 400;
-  color: $pink-02;
+  color: var(--text);
   margin-bottom: 0.5rem;
 }
 
@@ -22,22 +20,22 @@ section {
 .form-control-lg {
   width: 400px;
   box-shadow: none;
-  color: $pink-01;
+  color: var(--pink-01);
 }
 
 .form-control-lg:focus {
-  border: solid 3px $pink-01;
+  border: solid 3px var(--pink-01);
 }
 
 input {
   text-align: center;
-  border: solid 1px $pink-03;
+  border: solid 1px var(--pink-03);
 }
 
 input::placeholder {
   font-size: 1rem;
   text-align: center;
-  color: $pink-03;
+  color: var(--pink-03);
 }
 
 .message {
@@ -47,7 +45,7 @@ input::placeholder {
   font-size: 2.5rem;
   line-height: 2.7rem;
   text-align: center;
-  color: $pink-01;
+  color: var(--text);
   margin-bottom: 4rem;
 
   strong {
@@ -69,7 +67,7 @@ input::placeholder {
 }
 
 .mat-mdc-progress-spinner {
-  --mdc-circular-progress-active-indicator-color: #BD245F;
+  --mdc-circular-progress-active-indicator-color: var(--pink-03);
 }
 
 .container-card {
@@ -84,7 +82,7 @@ input::placeholder {
   margin-bottom: 0.5rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
 
   .message {
     font-size: 1.7rem;

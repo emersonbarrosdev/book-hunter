@@ -1,11 +1,9 @@
-@import '../../../../assets/styles/variables.scss';
-
 img {
   padding: 5px;
   min-width: 198px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: $pink-02;
+  background-color: var(--pink-02);
 }
 
 .card {
@@ -18,7 +16,7 @@ img {
   border-radius: 8px;
   position: relative;
   z-index: 2;
-  background-color: $pink-02;
+  background-color: var(--pink-02);
   transition: transform 0.3s ease;
 }
 
@@ -28,7 +26,7 @@ img {
 
 .card-information {
   padding: 7px 10px 7px 10px;
-  background: $pink-02;
+  background: var(--pink-02);
   border-radius: 0px 8px 8px 0px;
   display: flex;
   flex-direction: column;
@@ -37,7 +35,7 @@ img {
 }
 
 .title {
-  color: $yellow-01;
+  color: var(--title);
   font-weight: 600;
   font-size: 20px;
   line-height: 22px;
@@ -51,7 +49,7 @@ p {
 .information {
   font-weight: 500;
   font-size: 16px;
-  color: $yellow-03;
+  color: var(--yellow-03);
   margin-top: 5px;
 
 }
@@ -64,8 +62,8 @@ p {
 }
 
 button {
-  color: $pink-02;
-  background-color: $yellow-02;
+  color: var(--pink-02);
+  background-color: var(--yellow-02);
   font-size: 16px;
   width: 156px;
   height: 40px;
@@ -78,8 +76,8 @@ button {
 }
 
 button:hover {
-  background-color: $pink-02;
-  color: $yellow-02;
-  border: 2px solid $yellow-02;
+  background-color: var(--pink-02);
+  color: var(--yellow-02);
+  border: 2px solid var(--yellow-02);
 }
 
