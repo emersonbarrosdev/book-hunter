@@ -1,12 +1,12 @@
 <section>
-  <p  class="message">em cada página,
-    <strong>um novo <br> mundo</strong>
-    a desvendar
+  <p class="message">
+    em cada página <strong>um mundo</strong> a desvendar
   </p>
 
   <div class="question">Qual livro está procurando?</div>
   <div class="search">
-    <input [formControl]="searchField" class="form-control form-control-lg" type="text" placeholder="Busque por assunto, autoria, nome...">
+    <input [formControl]="searchField" class="form-control form-control-lg" type="text"
+      placeholder="Busque por assunto, autoria, nome...">
   </div>
 
   <div class="error-message" *ngIf="errorMessage">
@@ -31,5 +31,3 @@
 
   <!-- <app-book-card></app-book-card> -->
 </section>
-
-

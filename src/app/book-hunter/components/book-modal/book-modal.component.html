@@ -1,8 +1,10 @@
 <section *ngIf="statusModal" class="container {{ hideScroll() }}">
   <div class="card">
-    <button (click)="closeModal()" class="btn-close">
-      <span class="material-symbols-outlined">X</span>
-    </button>
+    <div class="close">
+      <button (click)="closeModal()" mat-mini-fab aria-label="Example icon button with a delete icon">
+        <mat-icon class="material-icons">close</mat-icon>
+      </button>
+    </div>
     <img class="image" src="{{ book?.thumbnail != undefined ? book?.thumbnail : 'assets/images/cover-unavailable.png' }}"
       alt="capa livro">
     <div class="card-information">

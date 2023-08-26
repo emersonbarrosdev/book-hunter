@@ -7,8 +7,18 @@
   transition: transform 0.3s ease;
 }
 
-.example-card:hover {
-  transform: scale(1.05);
+.overlay {
+  border-radius: 4px;
+  position: absolute;
+  width: 400px;
+  height: 280px;
+  opacity: 0.3;
+  background-color: black;
+  z-index: 5;
+}
+
+.example-card:hover .overlay {
+  display: none;
 }
 
 .card-content {
@@ -30,7 +40,6 @@ img {
 .card-text {
   min-width: 200px;
   padding: 1rem;
-  // flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -49,7 +58,7 @@ p {
 
   &.title {
 
-    text-align: center;
+    text-align: start;
     margin: 0;
     color: var(--title);
     font-size: 1.1rem;
@@ -66,21 +75,12 @@ span {
 
 .mdc-card__actions {
   padding: 0px;
-  min-height: auto;
-  align-items: center;
 
   button {
-    font-weight: 600;
     margin-top: 0.5rem;
     color: var(--pink-02);
     background: var(--yellow-02);
     transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
-
-    .bi::before,
-    [class^="bi-"]::before,
-    [class*=" bi-"]::before {
-      font-weight: 800 !important;
-    }
   }
 
   button:hover {
@@ -88,6 +88,7 @@ span {
     color: var(--yellow-02);
     border: 2px solid var(--yellow-02);
   }
+
 }
 
 @media (max-width: 600px) {
@@ -95,11 +96,7 @@ span {
     bottom: 1rem;
     margin: 1rem;
     width: 320px;
-    height: 800px;
-  }
-
-  .example-card:hover {
-    transform: none;
+    height: 450px;
   }
 
   .card-content {
@@ -110,28 +107,33 @@ span {
   }
 
   img {
-    display: block;
-    flex-direction: row;
     border-radius: 4px 4px 0 0;
     width: 320px;
     height: 450px;
+    position: absolute;
+    background-color: none;
+    display: block;
   }
 
-  .card-text {
-    margin: 10px 0;
+  .hidden {
+    display: none;
   }
 
-  p {
-    font-size: 1rem;
-    padding: 8px 0;
+  .mdc-card__actions {
+    width: 320px;
+    height: 450px;
+    position: absolute;
+    align-items: flex-end;
+    justify-content: end;
+    top: 0;
+    padding: 0 2rem 1rem 0;
 
-    &.title {
-      font-size: 1.4rem;
-      line-height: 1.6rem;
+    button:hover {
+      background: var(--pink-02);
     }
   }
 
-  span {
-    font-size: 1rem;
+  .overlay {
+    display: none;
   }
 }

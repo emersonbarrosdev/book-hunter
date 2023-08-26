@@ -1,18 +1,22 @@
 <mat-card class="example-card mat-elevation-z8">
-  <div class="card-content" class="blocked-content">
-    <img src="{{ book?.thumbnail != undefined ? book?.thumbnail : 'assets/img/not-available.png' }}"
-    alt="capa livro">
+  <div class="card-content">
+    <div class="overlay"></div>
+    <img src="{{ book?.thumbnail != undefined ? book?.thumbnail : 'assets/img/not-available.png' }}" alt="capa livro">
     <div class="card-text">
-      <p class="title">{{ book?.title | slice:0:30 }}</p>
-      <hr>
-      <p>Autoria:</p>
-      <span>{{ book?.authors | firstAuthor | slice:0:17 }}</span>
-      <p>Publicado:</p>
-      <span>{{ book?.publishedDate | date: 'dd/MM/yyyy' }}</span>
-      <p>Editora</p>
-      <span>{{ book?.publisher | slice:0:17 }}</span>
+      <div class="hidden">
+        <p class="title">{{ book?.title | slice:0:30 }}</p>
+        <hr>
+        <p>Autoria:</p>
+        <span>{{ book?.authors | firstAuthor | slice:0:17 }}</span>
+        <p>Publicado:</p>
+        <span>{{ book?.publishedDate | date: 'dd/MM/yyyy' }}</span>
+        <p>Editora</p>
+        <span>{{ book?.publisher | slice:0:17 }}</span>
+      </div>
       <mat-card-actions>
-        <button mat-button (click)="onModal(true)"><i class="bi bi-plus-lg"></i>Detalhes</button>
+        <button (click)="onModal(true)" mat-mini-fab aria-label="Example icon button with a delete icon">
+          <mat-icon class="material-icons">add</mat-icon>
+        </button>
       </mat-card-actions>
     </div>
   </div>
