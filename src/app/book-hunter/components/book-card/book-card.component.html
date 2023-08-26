@@ -1,48 +1,22 @@
-<section>
-  <div class="card">
+<mat-card class="example-card mat-elevation-z8">
+  <div class="card-content" class="blocked-content">
     <img src="{{ book?.thumbnail != undefined ? book?.thumbnail : 'assets/img/not-available.png' }}"
-      alt="capa livro">
-    <div class="card-information">
+    alt="capa livro">
+    <div class="card-text">
       <p class="title">{{ book?.title | slice:0:30 }}</p>
-      <p class="information">Autoria:</p>
-      <p class="result">{{ book?.authors | firstAuthor | slice:0:17 }}</p>
-      <p class="information">Data de publicação: </p>
-      <p class="result">{{ book?.publishedDate | date: 'dd/MM/yyyy' }}</p>
-      <p class="information">Editora:</p>
-      <p class="result">{{ book?.publisher | slice:0:17 }}</p>
-      <button (click)="onModal(true)">Mais detalhes</button>
+      <hr>
+      <p>Autoria:</p>
+      <span>{{ book?.authors | firstAuthor | slice:0:17 }}</span>
+      <p>Publicado:</p>
+      <span>{{ book?.publishedDate | date: 'dd/MM/yyyy' }}</span>
+      <p>Editora</p>
+      <span>{{ book?.publisher | slice:0:17 }}</span>
+      <mat-card-actions>
+        <button mat-button (click)="onModal(true)"><i class="bi bi-plus-lg"></i>Detalhes</button>
+      </mat-card-actions>
     </div>
   </div>
   <div *ngIf="openModal">
     <app-book-modal [book]="book" (changeModal)="onModal($event)"></app-book-modal>
   </div>
-  <div class="card-overlay"></div>
-</section>
-
-<!--
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ book?.thumbnail != undefined ? book?.thumbnail : 'assets/img/not-available.png' }}">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title" class="title">{{ book?.title | slice:0:30 }}</h5>
-
-          <p class="information">Autoria:</p>
-        <p class="result">{{ book?.authors | firstAuthor | slice:0:17 }}</p>
-        <p class="information">Data de publicação: </p>
-        <p class="result">{{ book?.publishedDate | date: 'dd/MM/yyyy' }}</p>
-        <p class="information">Editora:</p>
-        <p class="result">{{ book?.publisher | slice:0:17 }}</p>
-        <button (click)="onModal(true)">Mais detalhes</button>
-
-        </div>
-        <div *ngIf="openModal">
-          <app-book-modal [book]="book" (changeModal)="onModal($event)"></app-book-modal>
-        </div>
-        <div class="card-overlay"></div>
-      </div>
-    </div>
-  </div>
- -->
+</mat-card>

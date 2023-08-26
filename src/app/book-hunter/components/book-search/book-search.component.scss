@@ -1,6 +1,5 @@
 section {
   margin-top: 6rem;
-  font-size: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,7 +45,7 @@ input::placeholder {
   line-height: 2.7rem;
   text-align: center;
   color: var(--text);
-  margin-bottom: 4rem;
+  margin: 0 4rem 4rem 4rem;
 
   strong {
     font-family: 'Poppins', sans-serif;

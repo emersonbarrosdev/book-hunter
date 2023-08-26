@@ -8,6 +8,7 @@ import { Book } from '../../models/book';
 })
 export class BookCardComponent {
 
+  gridColumns = 3;
   @Input() book: Book;
   openModal: boolean;
 

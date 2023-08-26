@@ -13,6 +13,7 @@
 .brand {
   font-size: 2rem;
   font-weight: 700;
+  font-family: "Space Grotesk", sans-serif;
   color: var(--yellow-01);
   cursor: pointer;
 }
@@ -62,7 +63,7 @@
   color: var(--yellow-03);
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
 
 
 }

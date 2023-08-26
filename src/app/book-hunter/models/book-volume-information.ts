@@ -15,5 +15,6 @@ export class BookVolumeInformation {
     this.description = element.volumeInfo?.description;
     this.previewLink = element.volumeInfo?.previewLink;
     this.thumbnail = element.volumeInfo?.imageLinks?.thumbnail;
+
   }
 }
