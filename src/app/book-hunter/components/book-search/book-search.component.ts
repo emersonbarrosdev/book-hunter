@@ -22,10 +22,14 @@ export class BookSearchComponent {
   errorMessage: string;
   isSearching = false;
   showImage = true;
-
+  bookFound: Observable<BookVolumeInformation[]>
   constructor(
     private bookService: BookService,
-  ) { }
+  ) {
+    this.bookFound = this.initializeSearch().pipe(
+      map(result => this.processSearchResult(result))
+    );
+  }
 
   initializeSearch(): Observable<BooksResult> {
     this.setupSearch();
@@ -40,36 +44,36 @@ export class BookSearchComponent {
     this.searchField.valueChanges.pipe(
       tap(() => this.isSearching = true),
       tap(() => this.showImage = false),
-      catchError(error => {
-        this.errorMessage = error.message;
-        this.isSearching = false;
-        this.showImage = false;
-        return [];
-      })
+      catchError(error => this.handleSearchError(error))
     ).subscribe();
   }
 
   performSearch(inputValue: string): Observable<BooksResult> {
     return this.bookService.getSearch(inputValue).pipe(
       tap(() => this.isSearching = false),
-      catchError(error => {
-        this.errorMessage = error.message;
-        this.isSearching = false;
-        this.showImage = false;
-        return [];
-      })
+      catchError(error => this.handleSearchError(error))
     );
+  }
+
+  processSearchResult(result: BooksResult): BookVolumeInformation[] {
+    this.booksResults = result;
+
+    if (result.items) {
+      return result.items.map(item => new BookVolumeInformation(item));
+    } else {
+      return [];
+    }
+  }
+
+
+  handleSearchError(error: any) {
+    this.errorMessage = error.message;
+    this.isSearching = false;
+    this.showImage = false;
+    return [];
   }
 
   getBooks(items: Item[]): BookVolumeInformation[] {
     return items.map(element => new BookVolumeInformation(element));
   }
-
-  bookFound = this.initializeSearch().pipe(
-    map(result => {
-      this.booksResults = result;
-      return result.items || [];
-    }),
-    map(items => this.getBooks(items))
-  );
 }
