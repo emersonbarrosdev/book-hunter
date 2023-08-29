@@ -40,19 +40,23 @@ body {
   --yellow-02: #FFE227;
   --yellow-03: #FFF5DB;
   --yellow-04: #FFFFE6;
+  --error-message:#b40000;
+  --result:#1b1b1b;
 }
 
 :root .dark-theme {
   --body: #1b1b1b;
   --pink-01: #BD245F;
   --pink-02: #3d3d3d;
-  --pink-03: rgb(162, 162, 162);
+  --pink-03: #a2a2a2;
   --text: #FFF5DB;
   --title: #ffd770;
   --yellow-01: #FFF5DB;
   --yellow-02: #ffff92;
   --yellow-03: #dbdbdb;
   --yellow-04: #FFFFE6;
+  --error-message:#ff0000;
+  --result:#a2a2a2;
 }
 
 body {

@@ -9,16 +9,16 @@
       alt="capa livro">
     <div class="card-information">
       <p class="title">{{ book?.title }}</p>
-      <p class="information">Autoria:</p>
+      <p class="information">{{ "card-modal.authors" | translate }}</p>
       <p class="result">{{ book?.authors }}</p>
-      <p class="information">Data de publicação: </p>
+      <p class="information">{{ "card-modal.publishedDate" | translate }}</p>
       <p class="result">{{ book?.publishedDate | date: 'dd/MM/yyyy' }}</p>
-      <p class="information">Editora:</p>
+      <p class="information">{{ "card-modal.publisher" | translate }}</p>
       <p class="result">{{ book?.publisher }}</p>
-      <button (click)="readPreview()" class="details">Ler prévia</button>
+      <button (click)="readPreview()" class="details">{{ "modal.preview" | translate }}</button>
     </div>
     <div class="synopsis">
-      <h4 class="information">Sinopse</h4>
+      <h4 class="information">{{ "modal.synopsis" | translate }}</h4>
       <p class="result-synopsis">{{ book?.description }}</p>
     </div>
   </div>

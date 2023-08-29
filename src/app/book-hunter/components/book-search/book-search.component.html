@@ -1,10 +1,12 @@
 <section>
   <p class="message">
-    em cada página <strong>um mundo</strong> a desvendar
+    {{ "search.message-01" | translate }}
+    <strong>{{ "search.message-02" | translate }}</strong>
+    {{ "search.message-03" | translate }}
   </p>
 
   <div>
-    <div class="question">Qual livro está procurando?</div>
+    <div class="question">{{ "search.question" | translate }}</div>
 
     <div class="btn-search">
       <div class="search">
@@ -13,8 +15,9 @@
         <mat-error *ngIf="inputValue?.invalid && inputValue?.touched">{{getErrorMessage()}}</mat-error>
       </div>
 
-      <button (click)="btnSearch()" class="btn btn-primary"
-        [disabled]="inputValue.invalid || isSearching">Buscar</button>
+      <button (click)="btnSearch()" class="btn btn-primary" [disabled]="inputValue.invalid || isSearching">{{
+        "search.button" | translate }}
+      </button>
     </div>
   </div>
 
@@ -23,7 +26,7 @@
   </div>
 
   <div class="results" *ngIf="totalBooksWithThumbnail">
-    Resultados encontrados {{ totalBooksWithThumbnail }}
+    {{ "search.results" | translate }} {{ totalBooksWithThumbnail }}
   </div>
 
   <div *ngIf="isSearching">

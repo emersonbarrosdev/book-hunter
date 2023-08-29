@@ -6,11 +6,11 @@
       <div class="hidden">
         <p class="title">{{ book?.title | slice:0:30 }}</p>
         <hr>
-        <p>Autoria:</p>
+        <p>{{ "card-modal.authors" | translate }}</p>
         <span>{{ book?.authors | firstAuthor | slice:0:17 }}</span>
-        <p>Publicado:</p>
+        <p>{{ "card-modal.publishedDate" | translate }}</p>
         <span>{{ book?.publishedDate | date: 'dd/MM/yyyy' }}</span>
-        <p>Editora</p>
+        <p>{{ "card-modal.publisher" | translate }}</p>
         <span>{{ book?.publisher | slice:0:17 }}</span>
       </div>
       <mat-card-actions>

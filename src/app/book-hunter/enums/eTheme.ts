@@ -1,4 +1,4 @@
-export enum eTheme{
+export enum ETheme{
   ICON_MOON = 'bi bi-moon-stars',
   ICON_SUN = 'bi bi-brightness-high',
 

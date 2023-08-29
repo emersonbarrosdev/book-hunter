@@ -26,10 +26,27 @@ button {
 
 button:disabled {
   background: var(--pink-03);
+  border: none;
 }
 
 button:hover {
   background: var(--pink-02);
+  border: none;
+}
+
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--pink-01);
+  --bs-btn-border-color: var(--pink-01);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--pink-01);
+  --bs-btn-hover-border-color: var(--pink-01);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--pink-01);
+  --bs-btn-active-border-color: var(--pink-01);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--pink-01);
+  --bs-btn-disabled-border-color: var(--pink-01);
 }
 
 .search {
@@ -100,10 +117,30 @@ input::placeholder {
 }
 
 .results {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--result);
+}
+
+.mat-mdc-form-field-error {
+  color: var(--error-message);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
 }
 
 @media (max-width: 600px) {
+
+  .btn-search {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  .search {
+    margin-right: 0px;
+    margin-bottom: 0.5rem;
+  }
 
   .message {
     font-size: 1.7rem;
@@ -117,14 +154,22 @@ input::placeholder {
 
   .question {
     font-size: 1rem;
+    margin-left: 0;
+    text-align: center;
   }
 
   input {
     padding-top: 0;
+    text-align: center;
   }
 
   input::placeholder {
     font-size: 0.7rem;
+    text-align: center;
+  }
+
+  .btn-search {
+    width: 250px;
   }
 
 }

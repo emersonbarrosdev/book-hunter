@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Book } from '../../models/book';
 import { BookService } from '../../service/book.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-book-search',
@@ -17,8 +18,14 @@ export class BookSearchComponent implements OnDestroy {
   bookFound: Book[];
   bookSubscription: Subscription;
   totalBooksWithThumbnail: number;
+  msg: {};
 
-  constructor(private bookService: BookService) { }
+  constructor(
+    private bookService: BookService,
+    private searchTranslate: TranslateService
+  ) {
+    this.getTranslate();
+  }
 
   initializeSearch() {
     this.bookSubscription = this.bookService.getSearch(this.inputValue.value).subscribe({
@@ -59,13 +66,13 @@ export class BookSearchComponent implements OnDestroy {
   getErrorMessage() {
     const field = this.inputValue;
     if (field?.hasError('required')) {
-      return 'Preencha o campo para buscar um livro.';
+      return this.msg['search.error-message-fill-field'];
     }
     if (field?.hasError('minlength')) {
       const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 3;
-      return `Preencher no minímo ${requiredLength} caracteres.`
+      return this.msg['search.min-length-error'] + ' ' + requiredLength + ' ' + this.msg['search.characters'];
     }
-    return 'Campo inválido!'
+    return this.msg['search.invalid-field'];
   }
 
   handleSearchError(error: any) {
@@ -76,6 +83,17 @@ export class BookSearchComponent implements OnDestroy {
 
   btnSearch() {
     this.initializeSearch()
+  }
+
+  getTranslate() {
+    this.bookSubscription = this.searchTranslate.get([
+      'search.error-message-fill-field',
+      'search.min-length-error',
+      'search.characters',
+      'search.invalid-field',
+    ]).subscribe((resp: string) => {
+      this.msg = resp;
+    });
   }
 
   ngOnDestroy(): void {

@@ -2,7 +2,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { eTheme } from '../../enums/eTheme';
+import { ETheme } from '../../enums/eTheme';
 
 @Component({
   selector: 'app-header',
@@ -11,21 +11,17 @@ import { eTheme } from '../../enums/eTheme';
 })
 export class HeaderComponent {
 
-  applyTheme: eTheme = eTheme.TEXT_LIGHT;
-  applyIcon: eTheme = eTheme.ICON_MOON;
+  applyTheme: ETheme = ETheme.TEXT_LIGHT;
+  applyIcon: ETheme = ETheme.ICON_MOON;
   mobileQuery: MediaQueryList;
 
   constructor(
-    public headerTranslate: TranslateService,
     private router: Router,
-    private changeDetectorRef: ChangeDetectorRef, private media: MediaMatcher
+    private changeDetectorRef: ChangeDetectorRef,
+    private media: MediaMatcher
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.mobileQuery.addListener(() => changeDetectorRef.detectChanges());
-
-    headerTranslate.setDefaultLang('en');
-    const browserLang = headerTranslate.getBrowserLang();
-    headerTranslate.use(browserLang.match(/en/) ? browserLang : 'en');
   }
 
   get isMobile(): boolean {
@@ -35,12 +31,14 @@ export class HeaderComponent {
   toggle() {
     const theme = document.body.classList.toggle('dark-theme');
     if (theme) {
-      this.applyTheme = eTheme.TEXT_DARK
-      return this.applyIcon = eTheme.ICON_SUN
+      this.applyTheme = ETheme.TEXT_DARK;
+      this.applyIcon = ETheme.ICON_SUN;
+    } else {
+      this.applyTheme = ETheme.TEXT_LIGHT;
+      this.applyIcon = ETheme.ICON_MOON;
     }
-    this.applyTheme = eTheme.TEXT_LIGHT
-    return this.applyIcon = eTheme.ICON_MOON
   }
+
 
   reloadPage() {
     this.router.navigate(['/'])

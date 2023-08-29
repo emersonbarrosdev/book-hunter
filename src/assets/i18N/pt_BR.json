@@ -1,0 +1,28 @@
+{
+  "header": {
+    "title": "BOOKHUNTER",
+    "github": "GitHub",
+    "linkedin": "Linkedin"
+  },
+  "search": {
+    "message-01": "em cada página",
+    "message-02": "um mundo",
+    "message-03": "a desvendar",
+    "question": "Qual livro está procurando?",
+    "button": "Buscar",
+    "results": "Resultados encontrados",
+    "error-message-fill-field": "Preencha o campo para pesquisar.",
+    "min-length-error": "Preencher no minímo",
+    "characters": "caracteres.",
+    "invalid-field": "Campo inválido!"
+  },
+  "card-modal": {
+    "authors": "Autoria:",
+    "publishedDate": "Publicado:",
+    "publisher": "Editora:"
+  },
+  "modal": {
+    "preview":"Ler prévia",
+    "synopsis":"Sinopse"
+  }
+}

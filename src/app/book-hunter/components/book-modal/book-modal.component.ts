@@ -14,8 +14,6 @@ export class BookModalComponent {
   statusModal: boolean = true;
   @Output() changeModal = new EventEmitter();
 
-  constructor() { }
-
   closeModal() {
     this.statusModal = false;
     this.changeModal.emit(this.statusModal)

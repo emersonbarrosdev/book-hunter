@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { BookService } from '../../service/book.service';
 import { HeaderComponent } from './header.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { eTheme } from '../../enums/eTheme';
+import { ETheme } from '../../enums/eTheme';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -52,15 +52,15 @@ describe('HeaderComponent', () => {
     document.body.classList.remove('dark-theme');
     component.toggle();
     expect(document.body.classList.contains('dark-theme')).toBe(true);
-    expect(component.applyTheme).toBe(eTheme.TEXT_DARK);
-    expect(component.applyIcon).toBe(eTheme.ICON_SUN);
+    expect(component.applyTheme).toBe(ETheme.TEXT_DARK);
+    expect(component.applyIcon).toBe(ETheme.ICON_SUN);
   });
 
   it('should toggle to light theme', () => {
     document.body.classList.add('dark-theme');
     component.toggle();
     expect(document.body.classList.contains('dark-theme')).toBe(false);
-    expect(component.applyTheme).toBe(eTheme.TEXT_LIGHT);
-    expect(component.applyIcon).toBe(eTheme.ICON_MOON);
+    expect(component.applyTheme).toBe(ETheme.TEXT_LIGHT);
+    expect(component.applyIcon).toBe(ETheme.ICON_MOON);
   });
 });
