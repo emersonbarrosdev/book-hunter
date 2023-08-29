@@ -1,7 +1,7 @@
-import { Item } from './item';
+import { Items } from './items';
 
 export class BooksResult {
   kind: string;
-  items: Item[];
+  items: Items[];
   totalItems: number
 }

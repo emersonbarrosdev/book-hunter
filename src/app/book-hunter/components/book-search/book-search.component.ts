@@ -1,79 +1,85 @@
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, debounceTime, filter, map, switchMap, tap } from 'rxjs/operators';
-import { BookVolumeInformation } from '../../models/book-volume-information';
-import { BooksResult } from '../../models/books-result';
-import { Item } from '../../models/item';
+import { Component, OnDestroy } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { Book } from '../../models/book';
 import { BookService } from '../../service/book.service';
-
-const PAUSE = 500;
 
 @Component({
   selector: 'app-book-search',
   templateUrl: './book-search.component.html',
   styleUrls: ['./book-search.component.scss']
 })
-export class BookSearchComponent {
+export class BookSearchComponent implements OnDestroy {
 
-  searchField = new FormControl();
-  booksResults: BooksResult;
+  inputValue = new FormControl('', [Validators.required, Validators.minLength(3)])
   errorMessage: string;
   isSearching = false;
-  showImage = true;
-  bookFound: Observable<BookVolumeInformation[]>
-  constructor(
-    private bookService: BookService,
-  ) {
-    this.bookFound = this.initializeSearch().pipe(
-      map(result => this.processSearchResult(result))
-    );
+  bookFound: Book[];
+  bookSubscription: Subscription;
+  totalBooksWithThumbnail: number;
+
+  constructor(private bookService: BookService) { }
+
+  initializeSearch() {
+    this.bookSubscription = this.bookService.getSearch(this.inputValue.value).subscribe({
+      next: (resp) => {
+        this.isSearching = true;
+        if (resp) {
+          this.isSearching = false;
+          this.totalBooksWithThumbnail = this.calculateTotalBooksWithThumbnails(resp);
+          this.bookFound = this.bookInformation(resp.items);
+        }
+      },
+      error: err => this.handleSearchError(err),
+    });
   }
 
-  initializeSearch(): Observable<BooksResult> {
-    this.setupSearch();
-    return this.searchField.valueChanges.pipe(
-      debounceTime(PAUSE),
-      filter(inputElement => inputElement.length >= 2),
-      switchMap(inputValue => this.performSearch(inputValue)),
-    );
+  bookInformation(items): Book[] {
+    const book: Book[] = [];
+    items.forEach(element => {
+      if (element.volumeInfo?.imageLinks?.thumbnail) {
+        book.push({
+          title: element.volumeInfo?.title,
+          authors: element.volumeInfo?.authors,
+          publisher: element.volumeInfo?.publisher,
+          publishedDate: element.volumeInfo?.publishedDate,
+          description: element.volumeInfo?.description,
+          previewLink: element.volumeInfo?.previewLink,
+          thumbnail: element.volumeInfo?.imageLinks?.thumbnail,
+        })
+      }
+    });
+    return book;
   }
 
-  setupSearch(): void {
-    this.searchField.valueChanges.pipe(
-      tap(() => this.isSearching = true),
-      tap(() => this.showImage = false),
-      catchError(error => this.handleSearchError(error))
-    ).subscribe();
+  calculateTotalBooksWithThumbnails(resp): number {
+    return resp.items.filter((element) => element.volumeInfo?.imageLinks?.thumbnail).length;
   }
 
-  performSearch(inputValue: string): Observable<BooksResult> {
-    return this.bookService.getSearch(inputValue).pipe(
-      tap(() => this.isSearching = false),
-      catchError(error => this.handleSearchError(error))
-    );
-  }
-
-  processSearchResult(result: BooksResult): BookVolumeInformation[] {
-    this.booksResults = result;
-
-    if (result.items) {
-      return result.items.map(item => new BookVolumeInformation(item));
-    } else {
-      return [];
+  getErrorMessage() {
+    const field = this.inputValue;
+    if (field?.hasError('required')) {
+      return 'Preencha o campo para buscar um livro.';
     }
+    if (field?.hasError('minlength')) {
+      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 3;
+      return `Preencher no minímo ${requiredLength} caracteres.`
+    }
+    return 'Campo inválido!'
   }
-
 
   handleSearchError(error: any) {
     this.errorMessage = error.message;
     this.isSearching = false;
-    this.showImage = false;
     return [];
   }
 
-  getBooks(items: Item[]): BookVolumeInformation[] {
-    return items.map(element => new BookVolumeInformation(element));
+  btnSearch() {
+    this.initializeSearch()
   }
+
+  ngOnDestroy(): void {
+    this.bookSubscription.unsubscribe();
+  }
+
 }

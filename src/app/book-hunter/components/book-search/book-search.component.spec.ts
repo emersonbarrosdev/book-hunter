@@ -7,7 +7,7 @@ import { throwError } from 'rxjs';
 import { BookVolumeInformation } from '../../models/book-volume-information';
 import { BooksResult } from '../../models/books-result';
 import { ImageLinks } from '../../models/image-links';
-import { Item } from '../../models/item';
+import { Items } from '../../models/items';
 import { VolumeInformation } from '../../models/volume-information';
 import { BookService } from '../../service/book.service';
 import { BookSearchComponent } from './book-search.component';
@@ -34,7 +34,7 @@ describe('BookSearchComponent', () => {
     component = fixture.componentInstance;
     service = TestBed.inject(BookService);
     searchField = new FormControl();
-    component.searchField = searchField;
+    component.form = searchField;
     fixture.detectChanges();
   });
 
@@ -60,7 +60,7 @@ describe('BookSearchComponent', () => {
     volumeInformation.averageRating = 2;
     volumeInformation.ratingsCount = 2;
     volumeInformation.imageLinks = imagesLinks;
-    let items: Item[] = [];
+    let items: Items[] = [];
     items = [{ volumeInformation }];
     const result = component.getBooks(items);
     expect(result.length).toBe(1);
@@ -106,7 +106,7 @@ describe('BookSearchComponent', () => {
     volumeInformation.averageRating = 4.5;
     volumeInformation.ratingsCount = 5000;
     volumeInformation.imageLinks = mockImageLinks;
-    let items: Item[] = [{ volumeInformation }];
+    let items: Items[] = [{ volumeInformation }];
     const mockBookResult = new BooksResult();
     mockBookResult.kind = 'books#volumeList';
     mockBookResult.items = items;

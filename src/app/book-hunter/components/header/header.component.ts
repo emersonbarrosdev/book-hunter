@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, ElementRef, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
-import { eTheme } from '../../enums/eTheme';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { eTheme } from '../../enums/eTheme';
 
 @Component({
   selector: 'app-header',
@@ -15,10 +16,16 @@ export class HeaderComponent {
   mobileQuery: MediaQueryList;
 
   constructor(
+    public headerTranslate: TranslateService,
     private router: Router,
-    private changeDetectorRef: ChangeDetectorRef, private media: MediaMatcher) {
+    private changeDetectorRef: ChangeDetectorRef, private media: MediaMatcher
+  ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this.mobileQuery.addListener(() => changeDetectorRef.detectChanges())
+    this.mobileQuery.addListener(() => changeDetectorRef.detectChanges());
+
+    headerTranslate.setDefaultLang('en');
+    const browserLang = headerTranslate.getBrowserLang();
+    headerTranslate.use(browserLang.match(/en/) ? browserLang : 'en');
   }
 
   get isMobile(): boolean {

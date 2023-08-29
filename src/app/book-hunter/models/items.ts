@@ -1,5 +1,5 @@
 import { VolumeInformation } from './volume-information';
 
-export class Item {
+export class Items {
   volumeInformation: VolumeInformation;
 }

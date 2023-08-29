@@ -6,13 +6,34 @@ section {
 }
 
 .question {
+  margin-left: 5px;
   font-size: 1.3rem;
   font-weight: 400;
   color: var(--text);
   margin-bottom: 0.5rem;
 }
 
+.btn-search {
+  display: flex;
+  justify-content: flex-start;
+}
+
+button {
+  height: 50px;
+  background: var(--pink-01);
+  border: none;
+}
+
+button:disabled {
+  background: var(--pink-03);
+}
+
+button:hover {
+  background: var(--pink-02);
+}
+
 .search {
+  margin-right: 10px;
   margin-bottom: 1.3rem;
 }
 
@@ -27,13 +48,14 @@ section {
 }
 
 input {
-  text-align: center;
+  height: 50px;
+  text-align: start;
   border: solid 1px var(--pink-03);
 }
 
 input::placeholder {
   font-size: 1rem;
-  text-align: center;
+  text-align: start;
   color: var(--pink-03);
 }
 
@@ -81,7 +103,7 @@ input::placeholder {
   margin-bottom: 0.5rem;
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
 
   .message {
     font-size: 1.7rem;

@@ -3,18 +3,27 @@
     em cada página <strong>um mundo</strong> a desvendar
   </p>
 
-  <div class="question">Qual livro está procurando?</div>
-  <div class="search">
-    <input [formControl]="searchField" class="form-control form-control-lg" type="text"
-      placeholder="Busque por assunto, autoria, nome...">
+  <div>
+    <div class="question">Qual livro está procurando?</div>
+
+    <div class="btn-search">
+      <div class="search">
+        <input [formControl]="inputValue" class="form-control form-control-lg" type="text"
+          placeholder="Busque por assunto, autoria, nome..." required>
+        <mat-error *ngIf="inputValue?.invalid && inputValue?.touched">{{getErrorMessage()}}</mat-error>
+      </div>
+
+      <button (click)="btnSearch()" class="btn btn-primary"
+        [disabled]="inputValue.invalid || isSearching">Buscar</button>
+    </div>
   </div>
 
   <div class="error-message" *ngIf="errorMessage">
     {{ errorMessage }}
   </div>
 
-  <div class="results" *ngIf="bookFound | async">
-    resultados encontrados {{ booksResults.totalItems }}
+  <div class="results" *ngIf="totalBooksWithThumbnail">
+    Resultados encontrados {{ totalBooksWithThumbnail }}
   </div>
 
   <div *ngIf="isSearching">
@@ -23,8 +32,8 @@
     </div>
   </div>
 
-  <div class="container-card" *ngIf="bookFound | async as bookList">
-    <div *ngFor="let book of bookList">
+  <div class="container-card" *ngIf="bookFound?.length > 0">
+    <div *ngFor="let book of bookFound">
       <app-book-card [book]="book"></app-book-card>
     </div>
   </div>
