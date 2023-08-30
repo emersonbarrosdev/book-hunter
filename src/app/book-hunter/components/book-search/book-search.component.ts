@@ -103,5 +103,4 @@ export class BookSearchComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.bookSubscription.unsubscribe();
   }
-
 }
