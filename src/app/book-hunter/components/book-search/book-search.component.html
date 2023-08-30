@@ -9,13 +9,13 @@
     <div class="question">{{ "search.question" | translate }}</div>
 
     <div class="btn-search">
-      <div class="search">
-        <input [formControl]="inputValue" class="form-control form-control-lg" type="text"
+      <form [formGroup]="form" class="search">
+        <input class="form-control form-control-lg" type="text" formControlName="searchField"
           placeholder="Busque por assunto, autoria, nome..." required>
-        <mat-error *ngIf="inputValue?.invalid && inputValue?.touched">{{getErrorMessage()}}</mat-error>
-      </div>
+        <mat-error *ngIf="form.controls.searchField?.invalid && form.controls.searchField?.touched">{{ getErrorMessage() }}</mat-error>
+      </form>
 
-      <button (click)="btnSearch()" class="btn btn-primary" [disabled]="inputValue.invalid || isSearching">{{
+      <button (click)="btnSearch()" class="btn btn-primary" [disabled]="form.controls.searchField.invalid || isSearching">{{
         "search.button" | translate }}
       </button>
     </div>
