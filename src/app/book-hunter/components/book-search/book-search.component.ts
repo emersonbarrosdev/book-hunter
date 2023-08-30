@@ -1,18 +1,17 @@
-import { Component, OnDestroy } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { Book } from '../../models/book';
 import { BookService } from '../../service/book.service';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-book-search',
   templateUrl: './book-search.component.html',
   styleUrls: ['./book-search.component.scss']
 })
-export class BookSearchComponent implements OnDestroy {
+export class BookSearchComponent implements OnDestroy, OnInit {
 
-  inputValue = new FormControl('', [Validators.required, Validators.minLength(3)])
   errorMessage: string;
   isSearching = false;
   bookFound: Book[];
@@ -20,15 +19,20 @@ export class BookSearchComponent implements OnDestroy {
   totalBooksWithThumbnail: number;
   msg: {};
 
-  constructor(
-    private bookService: BookService,
-    private searchTranslate: TranslateService
-  ) {
+  private bookService = inject(BookService);
+  private searchTranslate = inject(TranslateService);
+  private formBuilder = inject(NonNullableFormBuilder);
+
+  form = this.formBuilder.group({
+    searchField: ['', [Validators.required, Validators.minLength(3)]]
+  });
+
+  ngOnInit(): void {
     this.getTranslate();
   }
 
   initializeSearch() {
-    this.bookSubscription = this.bookService.getSearch(this.inputValue.value).subscribe({
+    this.bookSubscription = this.bookService.getSearch(this.form.value.searchField).subscribe({
       next: (resp) => {
         this.isSearching = true;
         if (resp) {
@@ -64,7 +68,7 @@ export class BookSearchComponent implements OnDestroy {
   }
 
   getErrorMessage() {
-    const field = this.inputValue;
+    const field = this.form.controls.searchField;
     if (field?.hasError('required')) {
       return this.msg['search.error-message-fill-field'];
     }
